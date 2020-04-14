@@ -10,5 +10,6 @@
 		<module>ms-catalog-services</module>
 		<module>ms-products-services</module>
 		<module>ms-categories-services</module>
+		<module>ms-discovery-server</module>
 	</modules>
 </project>

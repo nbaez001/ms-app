@@ -20,13 +20,13 @@ public class CatalogController {
 	
 	@GetMapping
 	public Catalog getCatalog() {
-		CategoriesList categoriesList = restTemplate.getForObject("http://localhost:9002/categories", CategoriesList.class);
+		CategoriesList categoriesList = restTemplate.getForObject("http://categories-service/categories", CategoriesList.class);
 		Catalog catalog = new Catalog();
 		catalog.setCategoriesData(categoriesList.getCategories());
 		
 		categoriesList.getCategories()
 		.forEach(c -> {
-			ProductList productList = restTemplate.getForObject("http://localhost:9001/products/by_category/"+c.getId(),ProductList.class);
+			ProductList productList = restTemplate.getForObject("http://products-service/products/by_category/"+c.getId(),ProductList.class);
 			catalog.getCategories().put(c.getId(), new CatalogCategory(productList.getProducts()));
 		});
 		
