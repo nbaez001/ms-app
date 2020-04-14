@@ -15,11 +15,16 @@ public class CategoriesController {
 
 	@GetMapping
 	public CategoriesList list() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return new CategoriesList(Arrays.asList(
 				new Category(1L, "Tecnologia"),
-				new Category(2L, "Hogar y Electrodomesticos"),
+				new Category(2L, "Hogar y Electrodomesticos"), 
 				new Category(3L, "Moda")
-				));
+		));
 	}
-	
+
 }
